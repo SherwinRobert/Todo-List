@@ -1,0 +1,41 @@
+body{
+  background-image: unset;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #abbcce;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #8698ac;
+    border-radius: 100vh;
+    border: 1px solid #63819c;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4b6485;
+  }
+
+  @media (min-width:640px) {
+    
+    body{
+      background-image: url('Images/Wave-10s-1536px.png');
+    }
+
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 16px;
+  
+    }
+    
+  }

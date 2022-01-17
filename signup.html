@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Sign Up</title>
+</head>
+<body style="background-image: url('Images/91649.jpg');" class="bg-cover">
+    <div class="flex flex-col justify-around items-center h-full m-4">
+        <form id='login' class="bg-blue-600 rounded-lg sm:w-96 sm:h-[26rem] md:p-10 box-border p-2 w-full text-yellow-50 shadow-2xl sm:mt-0 mt-[25%]">
+            <h2 class="text-2xl mb-2">Sign Up</h2>
+            <input class="text-gray-800 bg-blue-300 w-full rounded-xl h-9 p-2 outline-none mb-2" id="user" type="text" placeholder="Username"><br>
+            <label class="text-blue-300" for="mail">Email Address</label><br>
+            <input class="text-gray-800 bg-blue-300 w-full rounded-xl h-9 p-2 outline-none mb-2"  type="email" id="mail" placeholder="Email"><br>
+            <label class="text-blue-300" for="password">Password</label><br>
+            <input class="text-gray-800 bg-blue-300 w-full rounded-xl h-9 p-2 outline-none mb-2" id="password" type="password" placeholder="Password"><br>
+            <label class="text-blue-300" for="checkpassword">Retype your Password</label><br>
+            <input class="text-gray-800 bg-blue-300 w-full rounded-xl h-9 p-2 outline-none mb-6" id="checkpasword" type="password" placeholder="Confirm Password"><br>
+            <button class="bg-blue-900 rounded-xl w-full h-9 p-2 mb-2" title='Log In' aria-label='Login Button' type='submit' id='signup'>Sign Up</button>
+            <p id="result"></p>
+        </form>
+        <div id="success" class="hidden bg-blue-600 text-blue-300 p-1 rounded text-sm mb-[1%]">
+            Sign-In Successful! <a class="text-white" href="index.html">Login</a>
+        </div>
+        <div class="font-bold text-gray-500">
+            <small>@2022 Notify</small>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

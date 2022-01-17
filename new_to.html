@@ -1,0 +1,122 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <script src="https://kit.fontawesome.com/fd72424c86.js" crossorigin="anonymous"></script>
+    <title>To Do App</title>
+</head>
+    <body class="bg-white h-full scroll-my-96">
+        
+        <div id="prompt" class="flex flex-col items-center justify-around absolute shadow-2xl backdrop-blur-xl rounded-lg h-32 w-52 -top-64 left-1/2 -translate-x-1/2 z-30 transform duration-100 tran">
+            <h2 class="text-center">Are you Sure you want to Log Out?</h2>
+            <div class="flex justify-around w-full">
+                <button id="yes" class="bg-blue-700 w-14 rounded">Yes</button>
+                <button id="no" class="bg-blue-400 w-14 rounded">No</button>
+            </div>
+        </div>
+
+        <div class="xl:overflow-y-hidden overflow-y-scroll xl:rounded-3xl max-w-screen-xl w-full h-auto xl:h-5/6 m-0 bg-white shadow-2xl absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+            <div class="sm:hidden flex justify-between items-center bg-gray-200 shadow-xl p-2 h-16 mb-4">
+                <div class="flex items-center">
+                    <img class="h-8" src="https://img.icons8.com/dusk/100/000000/n.png"/>
+                    <div class="font-bold text-gray-600">
+                        Notify!
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="p-2">
+                        <button id="logout1"><i class="fas fa-sign-out-alt"></i></button>
+                    </div>
+                    <!-- <div class="p-2">
+                        <i class="fas fa-cogs"></i>
+                    </div> -->
+                </div>
+            </div>
+            
+            <div class="fixed xl:rounded-l-3xl h-full hidden shadow-2xl sm:flex flex-col bg-gray-100 items-center justify-around w-16 p-4 box-border">
+                <div>
+                    <img class="h-8" src="https://img.icons8.com/dusk/100/000000/n.png"/>
+                </div>
+                
+                <div>
+                    <button id="logout0" ><i class="fas fa-sign-out-alt"></i></button>
+                </div>
+                <!-- <div>
+                    <i class="fas fa-cogs"></i>
+                </div> -->
+            </div>
+            <div class="sm:ml-16 sm:p-6 p-1">
+                <div id ="userText" class="font-bold text-2xl p-2 text-gray-600">
+                    Hi there, User!
+                </div>
+                <div class="p-2 xl:hidden">
+                    <div class="font-bold mb-2 text-gray-600">
+                        Categories
+                    </div>
+                    <div class="flex">
+                        <div id="work1" class="bg-orange-200 rounded-lg h-10 text-orange-600 p-2 mr-5 mb-2 w-32 cursor-pointer text-center">
+                            Work
+                        </div>
+                        <div id="home1" class="bg-violet-200 rounded-lg text-violet-600 p-2 mb-2 mr-5 w-32 cursor-pointer text-center">
+                            Home
+                        </div>
+                        <div id="study1" class="bg-green-200 rounded-lg text-green-600 p-2 mb-2 mr-5 w-32 cursor-pointer text-center">
+                            Study
+                        </div>
+                    </div>
+
+                </div>
+                <div class=" w-full p-2">
+                    <form id='form' class="mb-6">
+                        <div class="flex items-center">
+                            <input id='input' class="text-white bg-blue-600 xl:max-w-xl rounded-xl shadow-2xl h-9 p-2 outline-none w-full" type="text" placeholder="Write here">
+                            <div class="rounded-full bg-green-300 w-6 h-6 flex items-center justify-center m-1">
+                                <button type='submit'><i class="fas fa-plus"></i></button>
+                            </div>
+                            <div class="rounded-full bg-red-200 w-6 h-6 flex items-center justify-center m-1 mr-6">
+                                <button type='button'><i class="far fa-trash-alt"></i></button>
+                            </div>
+                        </div>
+
+                        <p class="" id="warner"> </p>
+                    </form>
+                    <div id="todoDiv" class="h-3/4">
+                        <div id="task" class="font-bold mb-2 text-gray-600">Today's Tasks for Work</div>
+                        <div id="lists" class="listDiv xl:w-3/4 sm:h-80 h-1/2 overflow-y-scroll overflow-x-hidden scroll-smooth" >
+                      
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class= "hidden absolute right-0 top-0 rounded-r-3xl h-full bg-gray-100 w-56 xl:flex flex-col items-center p-4 box-border">
+                <div class="mb-5" >
+                    <img class="rounded-full h-20 w-20 mx-auto" src="Images/profile.png" alt="">
+                    <div id="profile" class="text-center">
+                        Username
+                    </div>
+                </div>
+
+                <div class="self-stretch">
+                    <div class="font-bold mb-2 text-gray-600">
+                        Categories
+                    </div>
+                    <div id="work0" class="bg-orange-200 active:bg-orange-300 rounded-lg h-10 text-orange-600 p-2 mb-2 cursor-pointer">
+                        Work
+                    </div>
+                    <div id="home0" class="bg-violet-200 active:bg-green-300 rounded-lg text-violet-600 p-2 mb-2 cursor-pointer">
+                        Home
+                    </div>
+                    <div id="study0" class="bg-green-200 active:bg-green-300 rounded-lg text-green-600 p-2 mb-2 cursor-pointer">
+                        Study
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+        
+        <script src="new-todo.js"></script>
+    </body>
+</html>

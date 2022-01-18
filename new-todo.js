@@ -1,16 +1,16 @@
-const TODO_LIST_WORK = "Work";
-const TODO_LIST_HOME ="Home"
-const TODO_LIST_STUDY ="Study"
-const WORK_DONE = "work_done"
+const CATEGORIES_VAL = "Categories"
 var TODO_LIST_KEY ="Work"
 let login ="login"
-
 
 var listDiv = document.getElementById("lists")
 let para = document.getElementById("warner")
 let task = document.getElementById("task")
 let todoDiv = document.getElementById("todoDiv")
 let prompt = document.getElementById("prompt")
+let cateForm =document.getElementById("cateForm")
+let cateFormRow =document.getElementById("cateForm-row")
+let cateContainer =document.getElementById("cate-container")
+let cateRowContainer = document.getElementById("cate-row")
 let tickIcon =`<i class="fas fa-check"></i>`
 let delIcon = `<i class="far fa-trash-alt"></i>`
 const USER_DATA = "user_data"
@@ -68,9 +68,9 @@ const getTodo = (title,id,val=0,LIST_KEY) => {
         console.log(id)
         let todos = JSON.parse(localStorage.getItem(TODO_LIST_KEY))
         if(todos[id].val==0){
-            todos[id].val =1
+            todos[id].val = 1
         }else{
-            todos[id].val =0
+            todos[id].val = 0
         }
         localStorage.setItem(TODO_LIST_KEY, JSON.stringify(todos));
     };
@@ -86,15 +86,76 @@ const getTodo = (title,id,val=0,LIST_KEY) => {
     return container;
 }
 
+function categories(category){
+    const wrapperDiv = document.createElement("div")
+    const textDiv = document.createElement("div")
+    const buttonDiv = document.createElement("div")
+    const button =document.createElement("button")
+
+    textDiv.innerText = category;
+
+    wrapperDiv.setAttribute("class","bg-orange-200 flex justify-between items-center active:bg-orange-300 rounded-lg h-10 text-orange-600 p-2 mr-2 mb-2 cursor-pointer")
+    buttonDiv.setAttribute("class","rounded-full bg-green-300 w-6 h-6 flex items-center justify-center m-1")
+    button.innerHTML = `<i class="far fa-trash-alt"></i>`
+    button.addEventListener("click",cateDelete)
+    wrapperDiv.addEventListener("click",()=>{
+        keyChanger(category)
+    })
+
+    buttonDiv.append(button)
+    wrapperDiv.append(textDiv)
+    wrapperDiv.append(buttonDiv)
+
+    function cateDelete(e){
+        e.preventDefault()
+        wrapperDiv.remove()
+        localStorage.removeItem(textDiv.innerText)
+        let cateValue = JSON.parse(localStorage.getItem(CATEGORIES_VAL))
+        
+        let updatedCate = arrayRemove(cateValue,(textDiv.innerText))
+        if (updatedCate == []){
+            TODO_LIST_KEY ="Work"
+            divUpdater()
+            console.log("yooo")
+        }
+        console.log("the updated array is" + updatedCate)
+        localStorage.setItem(CATEGORIES_VAL,JSON.stringify(updatedCate))
+    }
+
+    return wrapperDiv
+}
+
+function cateAdd(e){
+    e.preventDefault()
+    let cateName = cateForm.value
+    cateDiv= categories(cateName)
+
+    cateContainer.append(cateDiv)
+
+    let cateValue = JSON.parse(localStorage.getItem(CATEGORIES_VAL))||[]
+    cateValue.push(cateName)
+    localStorage.setItem(CATEGORIES_VAL,JSON.stringify(cateValue))
+    localStorage.setItem(cateName,JSON.stringify([]))
+}
+
+function cateAddRow(e){
+    e.preventDefault()
+    let cateName = cateFormRow.value
+    cateDiv= categories(cateName)
+
+    cateRowContainer.append(cateDiv)
+
+    let cateValue = JSON.parse(localStorage.getItem(CATEGORIES_VAL))||[]
+    cateValue.push(cateName)
+    localStorage.setItem(CATEGORIES_VAL,JSON.stringify(cateValue))
+    localStorage.setItem(cateName,JSON.stringify([]))
+}
+
 function arrayRemove(arr, value) { 
 
     return arr.filter(function(ele){ 
         return ele != value; 
     });
-}
-
-function completer(){
-    
 }
 
 function deleteOrganiser(e){
@@ -140,7 +201,14 @@ window.onload = () => {
         location.href ="index.html"
     }
 
-   divUpdater()
+    let cates = JSON.parse(localStorage.getItem(CATEGORIES_VAL))
+    
+    cates.forEach((e)=>{
+        cateContainer.append(categories(e))
+        cateRowContainer.append(categories(e))
+    })
+    
+    divUpdater()
 }
 
     function divCreater(){
@@ -148,7 +216,7 @@ window.onload = () => {
         let listDiv = document.createElement("div")
         
         listDiv.setAttribute("id","lists")
-        listDiv.setAttribute("class","listDiv xl:w-3/4 h-2/3 overflow-y-auto overflow-x-hidden scroll-smooth")
+        listDiv.setAttribute("class","listDiv xl:w-3/4 h-80 overflow-y-auto overflow-x-hidden scroll-smooth")
         todoDiv.append(listDiv)
 
         return listDiv
@@ -206,20 +274,25 @@ window.onload = () => {
         location.href ="index.html"
     }
 
+    nameChanger();
+
     document.querySelectorAll("#form")[0].addEventListener("submit",buttonAdd)
     document.querySelectorAll("button")[1].addEventListener("click",ContentDelete)
-    
-    document.querySelector("#work0").addEventListener("click", ()=> keyChanger(TODO_LIST_WORK))
-    document.querySelector("#home0").addEventListener("click", ()=> keyChanger(TODO_LIST_HOME))
-    document.querySelector("#study0").addEventListener("click", ()=> keyChanger(TODO_LIST_STUDY))
-
-    document.querySelector("#work1").addEventListener("click", ()=> keyChanger(TODO_LIST_WORK))
-    document.querySelector("#home1").addEventListener("click", ()=> keyChanger(TODO_LIST_HOME))
-    document.querySelector("#study1").addEventListener("click", ()=> keyChanger(TODO_LIST_STUDY))
 
     document.getElementById("logout0").addEventListener("click",logOff)
     document.getElementById("logout1").addEventListener("click",logOff)
     document.getElementById("yes").addEventListener("click",confirmPrompt)
     document.getElementById("no").addEventListener("click",logOff)
 
-    nameChanger();
+    document.getElementById("cate-form").addEventListener("submit",cateAdd)
+    document.getElementById("cate-row-button").addEventListener("click",cateAddRow)
+
+    window.addEventListener("resize",cateReloader)
+
+    function cateReloader(){
+        const iw = window.innerWidth;
+        console.log(iw)
+        if((iw < 1282) && (iw>1277)){
+            location.reload()
+        }
+    }

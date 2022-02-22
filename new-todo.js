@@ -251,7 +251,7 @@ window.onload = () => {
     }
 
     function ContentDelete(){
-        document.querySelector("input").value=""
+        document.querySelector("#input").value=""
     }
 
     function nameChanger(){
@@ -278,6 +278,7 @@ window.onload = () => {
 
     document.querySelectorAll("#form")[0].addEventListener("submit",buttonAdd)
     document.querySelectorAll("button")[1].addEventListener("click",ContentDelete)
+    document.querySelector("#clearer").addEventListener("click",ContentDelete)
 
     document.getElementById("logout0").addEventListener("click",logOff)
     document.getElementById("logout1").addEventListener("click",logOff)

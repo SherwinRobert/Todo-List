@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- <link rel="stylesheet" href="styles.css"> -->
     <script src="https://kit.fontawesome.com/fd72424c86.js" crossorigin="anonymous"></script>
     <title>To Do App</title>
 </head>
     <body style="background-image: url('Images/Wave-10s-1536px.png');" class="bg-white bg-no-repeat xl:overflow-hidden">
-        
+        <!-- Prompt -->
         <div id="prompt" class="flex flex-col items-center justify-around absolute shadow-2xl backdrop-blur-xl rounded-lg h-32 w-52 -top-64 left-1/2 -translate-x-1/2 z-30 transform duration-100 tran">
             <h2 class="text-center">Are you Sure you want to Log Out?</h2>
             <div class="flex justify-around w-full">
@@ -19,7 +18,9 @@
             </div>
         </div>
 
+        <!-- Container -->
         <div class=" xl:rounded-3xl max-w-screen-xl w-full h-screen m-0 xl:min-h-[625px] xl:max-h-[625px] bg-white backdrop-blur-md xl:shadow-2xl absolute xl:top-1/2 xl:left-1/2 xl:-translate-y-1/2 xl:-translate-x-1/2">
+            <!-- NavBar Mobile -->
             <div class="sm:hidden flex justify-between items-center bg-gray-200 shadow-xl p-2 h-16 mb-4">
                 <div class="flex items-center">
                     <img class="h-8" src="https://img.icons8.com/dusk/100/000000/n.png"/>
@@ -29,18 +30,21 @@
                 </div>
                 <div class="p-2">
                     <button id="logout1"><i class="fas fa-sign-out-alt"></i></button>
-                </div> 
+                </div>
             </div>
-            
+            <!-- NavBar Desktop -->
+
             <div class="fixed xl:rounded-l-3xl h-full hidden shadow-2xl sm:flex flex-col bg-gray-100 items-center justify-around w-16 p-4 box-border">
                 <div>
                     <img class="h-8" src="https://img.icons8.com/dusk/100/000000/n.png"/>
                 </div>
-                
                 <div>
                     <button id="logout0" ><i class="fas fa-sign-out-alt"></i></button>
                 </div>
             </div>
+
+            <!-- User Menu Mobile -->
+
             <div class="sm:ml-16 sm:p-6 sm:pb-0 p-1">
                 <div id ="userText" class="font-bold text-2xl p-2 text-gray-600">
                     Hi there, User!
@@ -60,6 +64,9 @@
                     </div>
 
                 </div>
+
+                <!-- List Section -->
+
                 <div class=" w-full p-2">
                     <form id='form' class="mb-6">
                         <div class="flex items-center">
@@ -68,7 +75,7 @@
                                 <button type='submit'><i class="fas fa-plus"></i></button>
                             </div>
                             <div class="rounded-full bg-red-200 w-6 h-6 flex items-center justify-center m-1 mr-6">
-                                <button type='button'><i class="far fa-trash-alt"></i></button>
+                                <button id="clearer" type='button'><i class="far fa-trash-alt"></i></button>
                             </div>
                         </div>
                         <p class="" id="warner"> </p>
@@ -81,6 +88,9 @@
                     </div>
                 </div>
             </div>
+
+            <!-- User Menu Desktop -->
+
             <div class= "hidden absolute right-0 top-0 rounded-r-3xl h-full bg-gray-100 w-56 xl:flex flex-col items-center p-4 box-border">
                 <div class="mb-5" >
                     <img class="rounded-full h-20 w-20 mx-auto" src="Images/profile.png" alt="">
@@ -101,7 +111,7 @@
                             </div>
                         </form>
                     </div>
-                    <div id="cate-container" class="h-64 overflow-y-scroll">
+                    <div id="cate-container" class="h-64 overflow-y-auto">
 
                     </div>
                 </div>
